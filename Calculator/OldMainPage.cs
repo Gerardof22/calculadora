@@ -12,7 +12,8 @@ namespace Calculator
 
 		public OldMainPage()
 		{
-			Grid layout = new Grid {
+            
+            Grid layout = new Grid {
 				Padding = new Thickness(5,0),
 				RowSpacing = 1,
 				ColumnSpacing = 1,
@@ -92,7 +93,8 @@ namespace Calculator
 
 			OnClear(null, EventArgs.Empty);
 			Content = layout;
-		}
+            
+        }
 
 		Button CreateOperatorButton(string str, int row)
 		{
@@ -124,7 +126,7 @@ namespace Calculator
 			return button;
 		}
 
-		void OnSelectNumber(object sender, EventArgs e)
+        void OnSelectNumber(object sender, EventArgs e)
 		{
 			Button button = (Button)sender;
 			string pressed = button.Text;

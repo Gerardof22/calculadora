@@ -10,13 +10,26 @@ namespace Calculator
 		string mathOperator;
 		double firstNumber, secondNumber;
 
+        bool dot = false;
+
         public MainPage ()
         {
             InitializeComponent ();
             OnClear(this, null);
         }
 
-		void OnSelectNumber(object sender, EventArgs e)
+        void OnPressDot(object sender, EventArgs e)
+        {
+            if (!dot)
+            {
+                this.resultText.Text += ",";
+                dot = true;
+            }
+
+
+        }
+
+        void OnSelectNumber(object sender, EventArgs e)
 		{
 			Button button = (Button)sender;
 			string pressed = button.Text;
@@ -31,10 +44,11 @@ namespace Calculator
 
 			double number;
 			if (double.TryParse(this.resultText.Text, out number)) {
-				this.resultText.Text = number.ToString("N0");
+				this.resultText.Text = number.ToString();
 				if (currentState == 1) {
 					firstNumber = number;
 				} else {
+                    dot = false;
 					secondNumber = number;
 				}
 			}
